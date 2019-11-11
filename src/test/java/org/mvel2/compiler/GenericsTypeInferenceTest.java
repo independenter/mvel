@@ -19,6 +19,9 @@ import java.util.Map;
 public class GenericsTypeInferenceTest extends TestCase {
   private static final List<String> STRINGS = Arrays.asList("hi", "there", "dude");
 
+  /**
+   * 从属性中测试推断最后一个类型参数
+   */
   public final void testInferLastTypeParametersFromProperty() {
     ParserContext context = new ParserContext();
     context.setStrongTyping(true);
@@ -35,6 +38,9 @@ public class GenericsTypeInferenceTest extends TestCase {
     assertTrue("Wrong parametric type inferred", String.class.equals(context.getLastTypeParameters()[0]));
   }
 
+  /**
+   * 从方法中推断最后一个类型参数
+   */
   public final void testInferLastTypeParametersFromMethod() {
     ParserContext context = new ParserContext();
     context.setStrongTyping(true);
@@ -51,6 +57,9 @@ public class GenericsTypeInferenceTest extends TestCase {
     assertTrue("Wrong parametric type inferred", String.class.equals(context.getLastTypeParameters()[0]));
   }
 
+  /**
+   * 从属性方法推断最后一个类型参数
+   */
   public final void testInferLastTypeParametersFromPropertyMethod() {
     ParserContext context = new ParserContext();
     context.setStrongTyping(true);
@@ -97,12 +106,18 @@ public class GenericsTypeInferenceTest extends TestCase {
 //        assertEquals("Wrong parametric type inferred", String.class, context.getLastTypeParameters()[0]);
 //    }
 
+  /**
+   * A'wrapper class
+   */
   public static class AWrapper {
     public A getA() {
       return new A();
     }
   }
 
+  /**
+   * A Class
+   */
   public static class A {
     private boolean show;
 
